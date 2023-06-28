@@ -13,7 +13,7 @@ app.use(cors())
   const openai = new OpenAIApi(configuration);
 
  const history =[]
-app.post("/api/chats",async(req,res)=>{
+app.get("/api/chats",async(req,res)=>{
     const {user_input}=req.body
     console.log(user_input)
 
@@ -37,25 +37,7 @@ app.post("/api/chats",async(req,res)=>{
       console.log(completion_text);
       history.push([user_input, completion_text]);
        return(res.status(200).send({completion_text}))
-       
-       
-  //      setTimeout(()=>{
-  //       if(completion_text){
-  //      const user_input_again = readlineSync.question(
-  //       "\nWould you like to continue the conversation? (Y/N)"
-  //     );
-  //   }
-  // },2000)
       
-        
-   
-  //     if (user_input_again.toUpperCase() === "N") {
-  //       return;
-  //     } else if (user_input_again.toUpperCase() !== "Y"||user_input_again.toUpperCase() !== "N") {
-  //       res.status(500).send({message:"Invalid input. Please enter 'Y' or 'N'."});
-  //       return;
-  //     }
-  
    
 
     } catch (error) {
