@@ -14,10 +14,8 @@ app.use(cors())
 
  const history =[]
 app.get("/api/chats",async(req,res)=>{
-    const {user_input}=req.body
+    const {user_input}=req.query
     console.log(user_input)
-
-    // const user_input = readlineSync.question(userInput);
 
     const messages = [];
     for (const [input_text, completion_text] of history) {
