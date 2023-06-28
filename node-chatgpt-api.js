@@ -23,7 +23,7 @@ app.get("/api/chats",async(req,res)=>{
       messages.push({ role: "assistant", content: completion_text });
     }
     console.log("HELLO")
-    messages.push({ role: "user", content: user_input });
+    messages.push({ role: "user", content:`Crack a joke on ${user_input}` });
 
     try {
       const completion = await openai.createChatCompletion({
