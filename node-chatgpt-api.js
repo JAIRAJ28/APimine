@@ -5,7 +5,7 @@ const express = require("express");
 const app=express();
 
 app.use(express.json())
-
+app.use(cors())
   const configuration = new Configuration({
     apiKey: process.env.OPENAI_API_KEY,
   });
