@@ -6,9 +6,7 @@ require("dotenv").config()
 
 app.use(cors())
 app.use(express.json());
-
-const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
-console.log(`OpenAI API key: ${OPENAI_API_KEY}`);
+console.log(`OpenAI API key: ${process.env.OPENAI_API_KEY}`);
 app.get('/shayari/:word', async (req, res) => {
   try {
     const { word } = req.params;
@@ -22,7 +20,7 @@ app.get('/shayari/:word', async (req, res) => {
       ]
     }, {
       headers: {
-        'Authorization': `Bearer ${OPENAI_API_KEY}`, // Replace with your ChatGPT API key
+        'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`, // Replace with your ChatGPT API key
         'Content-Type': 'application/json'
       }
     });
