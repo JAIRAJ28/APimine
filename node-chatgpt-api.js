@@ -8,6 +8,7 @@ app.use(cors())
 app.use(express.json());
 
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
+console.log(`OpenAI API key: ${OPENAI_API_KEY}`)
 app.get('/shayari/:word', async (req, res) => {
   try {
     const { word } = req.params;
@@ -19,9 +20,7 @@ app.get('/shayari/:word', async (req, res) => {
         { role: 'system', content: 'You are a poet.' },
         { role: 'user', content: `Generate a shayari for ${word} in 
         English` }
-      ],
-      max_tokens: 50,
-      temperature: 0.7
+      ]
     }, {
       headers: {
         'Authorization': `Bearer ${OPENAI_API_KEY}`, // Replace with your ChatGPT API key
