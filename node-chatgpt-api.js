@@ -18,8 +18,7 @@ app.get('/shayari/:word', async (req, res) => {
       model: 'gpt-3.5-turbo', // Update with your desired model
       messages: [
         { role: 'system', content: 'You are a poet.' },
-        { role: 'user', content: `Generate a shayari for ${word} in 
-        English` }
+        { role: 'user', content: `Generate a shayari for ${word} in Hindi` }
       ]
     }, {
       headers: {
@@ -28,11 +27,11 @@ app.get('/shayari/:word', async (req, res) => {
       }
     });
 
-    const shayari = response.data.choices[0].message.content;
-    res.json({ shayari });
+    const shayari = response.data.choices[0].message.content.split("\n\n")[0];
+    res.send(shayari);
   } catch (error) {
     console.error('Error:', error);
-    res.status(500).json({ error: 'An error occurred' });
+    res.status(500).send({ error: 'An error occurred' });
   }
 });
 
