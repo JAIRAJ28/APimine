@@ -2,9 +2,8 @@ const express = require('express');
 const cors = require('cors');
 const axios = require('axios');
 const app = express();
-require("dotenv").config()
-
 app.use(cors())
+require("dotenv").config()
 app.use(express.json());
 console.log(`OpenAI API key: ${process.env.OPENAI_API_KEY}`);
 app.get('/shayari/:word', async (req, res) => {
